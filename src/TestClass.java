@@ -30,7 +30,7 @@ public class TestClass {
 
         }
 
-        System.out.println("Average Accuracy = " + Train.averageAccuracy);
+        System.out.println("Average Accuracy = " + Train.averageAccuracy + " %");
 
 
 

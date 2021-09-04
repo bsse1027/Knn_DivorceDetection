@@ -251,7 +251,7 @@ public class TrainClass{
 
         }
 
-        averageAccuracy=accCount/kFold;
+        averageAccuracy=(accCount/kFold)*100;
     }
 
 
