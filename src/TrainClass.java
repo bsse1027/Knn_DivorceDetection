@@ -7,7 +7,7 @@ public class TrainClass{
 
     public void Start(int a, Double kFold) throws IOException {
 
-        BufferedReader input =new BufferedReader(new FileReader("iris.txt"));
+        BufferedReader input =new BufferedReader(new FileReader("divorce2.txt"));
 
         //ArrayList <ArrayList <String>> shuffle= new ArrayList<ArrayList<String>>();
 
@@ -21,8 +21,8 @@ public class TrainClass{
 
 
 
-        Scanner scanner = new Scanner(new FileInputStream("iris.txt"));
-        Scanner scanner1 = new Scanner(new FileInputStream("iris.txt"));
+        //Scanner scanner = new Scanner(new FileInputStream("iris.txt"));
+        //Scanner scanner1 = new Scanner(new FileInputStream("iris.txt"));
         int countLine=0, TestStart, readCount=0,k=5,readCountCC = 0;
         Distance dist =new Distance();
         double pointRead=-1;
@@ -38,7 +38,7 @@ public class TrainClass{
 //       System.out.println("Total Datas: "+countLine);
 
 
-        Scanner shuffleScan =new Scanner(new File("iris2.txt"));
+        Scanner shuffleScan =new Scanner(new File("divorce2.txt"));
 
 
         //int max=countLine-(countLine/kFold), min=1;
@@ -52,8 +52,7 @@ public class TrainClass{
         //System.out.println(TestBound);
 
 
-        double p1,p2,p3,p4;
-        String className;
+        int p1,p2,p3,p4,p5,p6,className;
 
         ArrayList<Points> trainPoints =new ArrayList<Points>();
         ArrayList<Points> testPoints =new ArrayList<Points>();
@@ -68,15 +67,17 @@ public class TrainClass{
             /*System.out.println(readCount);*/
 
 
-            p1=shuffleScan.nextDouble();
-            p2=shuffleScan.nextDouble();
-            p3=shuffleScan.nextDouble();
-            p4=shuffleScan.nextDouble();
-            className=shuffleScan.nextLine().substring(1);
+            p1=shuffleScan.nextInt();
+            p2=shuffleScan.nextInt();
+            p3=shuffleScan.nextInt();
+            p4=shuffleScan.nextInt();
+            p5=shuffleScan.nextInt();
+            p6=shuffleScan.nextInt();
+            className= Integer.parseInt(shuffleScan.nextLine().substring(1));
 
             //System.out.println(p1 + p2 + p3 + p4 + className);
 
-            Points newPoint=new Points(p1,p2,p3,p4,className);
+            Points newPoint=new Points(p1,p2,p3,p4,p5,p6,className);
 
             if (readCount>= TestStart && readCount<=TestBound)
 
@@ -98,7 +99,7 @@ public class TrainClass{
         //System.out.println(trainPoints.size());
         for(int iiii=0;iiii < testPoints.size();iiii++)
         {
-            testPointsCC.add(new Points(testPoints.get(iiii).point1,testPoints.get(iiii).point2,testPoints.get(iiii).point3,testPoints.get(iiii).point4,""));
+            testPointsCC.add(new Points(testPoints.get(iiii).point1,testPoints.get(iiii).point2,testPoints.get(iiii).point3,testPoints.get(iiii).point4,testPoints.get(iiii).point5,testPoints.get(iiii).point6,100));
 
         }
 
@@ -108,7 +109,7 @@ public class TrainClass{
 
         for (int i=0;i<testPoints.size();i++)
         {
-            double Iset=0,Iversi=0,Ivirgin=0;
+            int IDivorce=0,INotDivorced=0;
             ArrayList<DistanceWIthClass> dWc= new ArrayList<>();
 
             for (int j=0;j<trainPoints.size();j++)
@@ -145,48 +146,44 @@ public class TrainClass{
             for(int i2=0;i2<k;i2++)
             {
 
-                if (dWc.get(i2).getClassName().contains("Iris-setosa") )
+                if (dWc.get(i2).getClassName()==1 )
                 {
-                    Iset=Iset+1;
+                    IDivorce=IDivorce+1;
                 }
 
-                else if (dWc.get(i2).getClassName().contains("Iris-versicolor"))
+                else if (dWc.get(i2).getClassName()==0)
                 {
-                    Iversi=Iversi+1;
+                    INotDivorced=INotDivorced+1;
                 }
 
-                else if (dWc.get(i2).getClassName().contains("Iris-virginica"))
+                /*else if (dWc.get(i2).getClassName().contains("Iris-virginica"))
                 {
                     Ivirgin=Ivirgin+1;
-                }
+                }*/
 
             }
-            //System.out.println("Iset" + Iset + "I versi" + Iversi + "Ivirgin" + Ivirgin );
+            //System.out.println("IDivorce" + IDivorce + "I versi" + INotDivorced + "Ivirgin" + Ivirgin );
 
             //System.out.println(testPoints.get(i).getClassName());
 
-                if(Iset > Iversi && Iset > Ivirgin)
+                if(IDivorce > INotDivorced)
                 {
                     //System.out.println("Isetosa Paisi");
-                    testPointsCC.get(i).setClassName("Iris-setosa");
+                    testPointsCC.get(i).setClassName(1);
 
                 }
-                else if(Iversi > Ivirgin && Iversi > Iset)
+                else
                 {
-                    //System.out.println("Iversi Paisi");
-                    testPointsCC.get(i).setClassName("Iris-versicolor");
+                    //System.out.println("INotDivorced Paisi");
+                    testPointsCC.get(i).setClassName(0);
                 }
-                else if(Ivirgin>Iset && Ivirgin>Iversi)
-                {
-                    //System.out.println("Ivirgin Paisi");
-                    testPointsCC.get(i).setClassName("Iris-virginica");
-                }
+
 
 
 
             //System.out.println("Start Modified Test Points:"+testPointsCC+"\n");
 
-                    if(testPointsCC.get(i).getClassName().contains(testPoints.get(i).getClassName()))
+                    if(testPointsCC.get(i).getClassName()==(testPoints.get(i).getClassName()))
                     {
                         equalSum++;
 

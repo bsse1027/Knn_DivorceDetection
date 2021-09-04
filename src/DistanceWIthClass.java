@@ -3,15 +3,15 @@ import java.util.Comparator;
 public class DistanceWIthClass implements Comparable<DistanceWIthClass> {
 
     double distance;
-    String className;
+    int className;
 
-    public DistanceWIthClass(double d,String a){
+    public DistanceWIthClass(double d,int a){
 
         this.distance=d;
         this.className=a;
     }
 
-    public String getClassName() {
+    public int getClassName() {
         return className;
     }
 

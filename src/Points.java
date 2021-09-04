@@ -1,24 +1,26 @@
 public class Points {
 
-    double point1,point2,point3,point4;
-    private String ClassName;
+    int point1,point2,point3,point4,point5,point6;
+    private int ClassName;
 
-    public Points(double p1,double p2,double p3,double p4,String a)
+    public Points(int p1,int p2,int p3,int p4,int p5,int p6 ,int a)
     {
 
         this.point1=p1;
         this.point2=p2;
         this.point3=p3;
         this.point4=p4;
+        this.point5=p5;
+        this.point6=p6;
         this.ClassName=a;
 
     }
 
-    public String getClassName() {
+    public int getClassName() {
         return ClassName;
     }
 
-    public void setClassName(String className) {
+    public void setClassName(int className) {
         ClassName = className;
     }
 

@@ -10,9 +10,9 @@ public class Shuffle {
 
     public void ShuffleTxt() throws IOException {
 
-        BufferedReader input =new BufferedReader(new FileReader("iris.txt"));
-        BufferedWriter shuffledOut=new BufferedWriter(new FileWriter("iris2.txt"));
-        Scanner scanner1 = new Scanner(new FileInputStream("iris.txt"));
+        BufferedReader input =new BufferedReader(new FileReader("divorceT.csv"));
+        BufferedWriter shuffledOut=new BufferedWriter(new FileWriter("divorce2.txt"));
+        Scanner scanner1 = new Scanner(new FileInputStream("divorce.csv"));
         ArrayList<String> inputTake=new ArrayList<String>();
 
 
