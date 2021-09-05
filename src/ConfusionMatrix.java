@@ -87,6 +87,10 @@ public class ConfusionMatrix {
         double recall = confusionMat[0]/(confusionMat[0]+confusionMat[3]);
         double precision = confusionMat[0]/(confusionMat[0]+confusionMat[2]);
         double fMeasure = (2.0*precision*recall)/(precision+recall);
+        /*for(int i=0;i<4;i++)
+        {
+            System.out.println(confusionMat[i]+"\n");
+        }*/
 
         System.out.println("------Final Stats------");
         System.out.println("Accuracy = "+ accuracy*100+"%");
