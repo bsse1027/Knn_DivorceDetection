@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +12,8 @@ public class TestClass {
         double kFold=10;
         TrainClass Train =new TrainClass();
         Shuffle shuffler=new Shuffle();
+        File file = new File("DivorceCC.txt");
+        file.delete();
 
 
 
@@ -29,8 +32,10 @@ public class TestClass {
 
 
         }
+        ConfusionMatrix confMat= new ConfusionMatrix();
+        confMat.makeConfMat(lineCount);
 
-        System.out.println("Average Accuracy = " + Train.averageAccuracy + " %");
+        //System.out.println("Average Accuracy = " + Train.averageAccuracy + " %");
 
 
 

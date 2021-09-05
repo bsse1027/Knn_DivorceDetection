@@ -12,7 +12,7 @@ public class Shuffle {
 
         BufferedReader input =new BufferedReader(new FileReader("divorceT.csv"));
         BufferedWriter shuffledOut=new BufferedWriter(new FileWriter("divorce2.txt"));
-        Scanner scanner1 = new Scanner(new FileInputStream("divorce.csv"));
+        Scanner scanner1 = new Scanner(new FileInputStream("divorceT.csv"));
         ArrayList<String> inputTake=new ArrayList<String>();
 
 
@@ -23,6 +23,7 @@ public class Shuffle {
 
         for (int i=0;i<countLine;i++)
         {
+
             String s= scanner1.next();
             inputTake.add(s);
 

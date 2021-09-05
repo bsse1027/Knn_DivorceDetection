@@ -26,12 +26,6 @@ public class Points {
 
     @Override
     public String toString() {
-        return "Points{" +
-                "point1=" + point1 +
-                ", point2=" + point2 +
-                ", point3=" + point3 +
-                ", point4=" + point4 +
-                ", ClassName=" + ClassName +
-                '}';
+        return point1+","+point2+","+point3+","+point4+","+point5+","+point6+","+ClassName;
     }
 }

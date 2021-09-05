@@ -55,6 +55,7 @@ public class TrainClass{
         int p1,p2,p3,p4,p5,p6,className;
 
         ArrayList<Points> trainPoints =new ArrayList<Points>();
+        ArrayList<Points> allPoints =new ArrayList<Points>();
         ArrayList<Points> testPoints =new ArrayList<Points>();
         ArrayList<Points> testPointsCC =new ArrayList<Points>();
 
@@ -83,11 +84,13 @@ public class TrainClass{
 
             {
                 testPoints.add(newPoint);
+                allPoints.add(newPoint);
                 continue;
             }
 
 //            readCountCC++;
             trainPoints.add(newPoint);
+            allPoints.add(newPoint);
 
         }
 
@@ -235,18 +238,20 @@ public class TrainClass{
 
         System.out.println("Accuracy Per Iteration: "+ accuracy);
 
-        BufferedWriter shuffledOut=new BufferedWriter(new FileWriter("irisTestCC.txt"));
+        BufferedWriter shuffledOut=new BufferedWriter(new FileWriter("DivorceCC.txt",true));
         BufferedWriter shuffledOut1=new BufferedWriter(new FileWriter("irisTest.txt"));
         for(int i=0;i<testPointsCC.size();i++)
         {
             shuffledOut.write(String.valueOf(testPointsCC.get(i)));
             shuffledOut.newLine();
             shuffledOut.flush();
-            shuffledOut1.write(String.valueOf(testPoints.get(i)));
-            shuffledOut1.newLine();
-            shuffledOut1.flush();
-
         }
+
+
+
+
+
+
 
         averageAccuracy=(accCount/kFold)*100;
     }
